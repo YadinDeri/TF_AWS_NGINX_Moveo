@@ -40,9 +40,15 @@ resource "aws_security_group" "private_ec2" {
   }
 }
 
-resource "aws_key_pair" "moveo_ec2-key" {
-  key_name   = "moveo-ec2-key" 
-  public_key = file("my-local-machine-moveo.pub") 
+
+resource "tls_private_key" "moveo_key_pair" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
+resource "aws_key_pair" "moveo_ec2_key" {
+  key_name   = "moveo-ec2-key"
+  public_key = tls_private_key.moveo_key_pair.public_key_openssh
 }
 
 module "nginx_vms" {
@@ -53,7 +59,7 @@ module "nginx_vms" {
   instance_type      = each.value.instance_type
   subnet_id          = [for vpc, details in module.vpcs : details.local_var_private_subnet[0]][0]
   security_group_nginx = [aws_security_group.private_ec2.id]
-  key_name = aws_key_pair.moveo_ec2-key.key_name
+  key_name = aws_key_pair.moveo_ec2_key.key_name
   tags = {
     Name = each.value.name
   }

@@ -26,3 +26,12 @@ output "applb_dns" {
   value = module.load_balancer.alb_dns
 }
 
+
+output "private_key_pem" {
+  value     = tls_private_key.moveo_key_pair.private_key_pem
+  sensitive = true
+}
+
+output "public_key" {
+  value = tls_private_key.moveo_key_pair.public_key_openssh
+}

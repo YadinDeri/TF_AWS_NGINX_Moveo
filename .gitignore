@@ -3,3 +3,5 @@ terraform.tfstate
 terraform.tfstate.backup
 .terraform/providers/registry.terraform.io/hashicorp/aws/3.76.1/windows_386/terraform-provider-aws_v3.76.1_x5.exe
 .terraform/modules/modules.json
+.terraform/providers/registry.terraform.io/hashicorp/tls/4.0.6/windows_386/LICENSE.txt
+.terraform/providers/registry.terraform.io/hashicorp/tls/4.0.6/windows_386/terraform-provider-tls_v4.0.6_x5.exe
