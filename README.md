@@ -149,6 +149,7 @@ The solution works as follows:
 2. Requests reaching the ALB are automatically forwarded to the Target Group, which contains the EC2 instance hosting the NGINX application.
 3. The Target Group communicates with the EC2 instance in the private subnet, ensuring that the NGINX application is accessible to the public while maintaining the security of the private subnet.
 
+![image](https://github.com/user-attachments/assets/dfc1072c-7acf-45b9-9529-3bda1862aaa4)
 
 
 
