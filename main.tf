@@ -66,7 +66,6 @@ module "nginx_vms" {
 }
 
 
-
 module "load_balancer" {
   source = "./Modules/loadBalancer"
   public_subnets = module.vpcs.vpc-test.local_var_public_subnet
